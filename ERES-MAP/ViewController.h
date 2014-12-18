@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
+#import <Superpin/Superpin.h>
 
-@interface ViewController : UIViewController
-
-
+@interface ViewController : UIViewController <MKMapViewDelegate>
+@property (nonatomic,weak) IBOutlet SPMapView *mapView;
 @end
 

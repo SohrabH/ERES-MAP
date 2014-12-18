@@ -7,10 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A018FAE11A303E5F0076C4A0 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A018FAE01A303E5F0076C4A0 /* ViewController.xib */; };
+		A018FAE31A303F750076C4A0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A018FAE21A303F750076C4A0 /* MapKit.framework */; };
+		A03824471A420D04000C666B /* Superpin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03824461A420D04000C666B /* Superpin.framework */; };
+		A038244A1A420D18000C666B /* SPAirport.m in Sources */ = {isa = PBXBuildFile; fileRef = A03824491A420D18000C666B /* SPAirport.m */; };
+		A038244C1A420D1E000C666B /* Airports.plist in Resources */ = {isa = PBXBuildFile; fileRef = A038244B1A420D1E000C666B /* Airports.plist */; };
+		A03824501A42100D000C666B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A038244F1A42100D000C666B /* Foundation.framework */; };
+		A03824521A421013000C666B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03824511A421013000C666B /* CoreGraphics.framework */; };
+		A03824541A421019000C666B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03824531A421019000C666B /* UIKit.framework */; };
 		A090FF7A1A20F9B90040A4B4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A090FF791A20F9B90040A4B4 /* main.m */; };
 		A090FF7D1A20F9B90040A4B4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A090FF7C1A20F9B90040A4B4 /* AppDelegate.m */; };
 		A090FF801A20F9B90040A4B4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A090FF7F1A20F9B90040A4B4 /* ViewController.m */; };
-		A090FF831A20F9B90040A4B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A090FF811A20F9B90040A4B4 /* Main.storyboard */; };
 		A090FF851A20F9B90040A4B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A090FF841A20F9B90040A4B4 /* Images.xcassets */; };
 		A090FF881A20F9B90040A4B4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A090FF861A20F9B90040A4B4 /* LaunchScreen.xib */; };
 		A090FF941A20F9B90040A4B4 /* ERES_MAPTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A090FF931A20F9B90040A4B4 /* ERES_MAPTests.m */; };
@@ -27,6 +34,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A018FAE01A303E5F0076C4A0 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		A018FAE21A303F750076C4A0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		A03824461A420D04000C666B /* Superpin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Superpin.framework; sourceTree = "<group>"; };
+		A03824481A420D18000C666B /* SPAirport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPAirport.h; sourceTree = "<group>"; };
+		A03824491A420D18000C666B /* SPAirport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPAirport.m; sourceTree = "<group>"; };
+		A038244B1A420D1E000C666B /* Airports.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = Airports.plist; path = ../Airports.plist; sourceTree = "<group>"; };
+		A038244F1A42100D000C666B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A03824511A421013000C666B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A03824531A421019000C666B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A090FF741A20F9B90040A4B4 /* ERES-MAP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ERES-MAP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A090FF781A20F9B90040A4B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A090FF791A20F9B90040A4B4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -34,7 +50,6 @@
 		A090FF7C1A20F9B90040A4B4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A090FF7E1A20F9B90040A4B4 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		A090FF7F1A20F9B90040A4B4 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		A090FF821A20F9B90040A4B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A090FF841A20F9B90040A4B4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A090FF871A20F9B90040A4B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		A090FF8D1A20F9B90040A4B4 /* ERES-MAPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ERES-MAPTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,6 +62,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A03824541A421019000C666B /* UIKit.framework in Frameworks */,
+				A03824521A421013000C666B /* CoreGraphics.framework in Frameworks */,
+				A03824501A42100D000C666B /* Foundation.framework in Frameworks */,
+				A03824471A420D04000C666B /* Superpin.framework in Frameworks */,
+				A018FAE31A303F750076C4A0 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,9 +80,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A03824551A421077000C666B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A038244B1A420D1E000C666B /* Airports.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		A03824561A421259000C666B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A03824461A420D04000C666B /* Superpin.framework */,
+				A018FAE21A303F750076C4A0 /* MapKit.framework */,
+				A038244F1A42100D000C666B /* Foundation.framework */,
+				A03824511A421013000C666B /* CoreGraphics.framework */,
+				A03824531A421019000C666B /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A090FF6B1A20F9B90040A4B4 = {
 			isa = PBXGroup;
 			children = (
+				A03824561A421259000C666B /* Frameworks */,
 				A090FF761A20F9B90040A4B4 /* ERES-MAP */,
 				A090FF901A20F9B90040A4B4 /* ERES-MAPTests */,
 				A090FF751A20F9B90040A4B4 /* Products */,
@@ -85,7 +126,10 @@
 				A090FF7C1A20F9B90040A4B4 /* AppDelegate.m */,
 				A090FF7E1A20F9B90040A4B4 /* ViewController.h */,
 				A090FF7F1A20F9B90040A4B4 /* ViewController.m */,
-				A090FF811A20F9B90040A4B4 /* Main.storyboard */,
+				A018FAE01A303E5F0076C4A0 /* ViewController.xib */,
+				A03824481A420D18000C666B /* SPAirport.h */,
+				A03824491A420D18000C666B /* SPAirport.m */,
+				A03824551A421077000C666B /* Resources */,
 				A090FF841A20F9B90040A4B4 /* Images.xcassets */,
 				A090FF861A20F9B90040A4B4 /* LaunchScreen.xib */,
 				A090FF771A20F9B90040A4B4 /* Supporting Files */,
@@ -199,8 +243,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A090FF831A20F9B90040A4B4 /* Main.storyboard in Resources */,
+				A038244C1A420D1E000C666B /* Airports.plist in Resources */,
 				A090FF881A20F9B90040A4B4 /* LaunchScreen.xib in Resources */,
+				A018FAE11A303E5F0076C4A0 /* ViewController.xib in Resources */,
 				A090FF851A20F9B90040A4B4 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,6 +266,7 @@
 			files = (
 				A090FF801A20F9B90040A4B4 /* ViewController.m in Sources */,
 				A090FF7D1A20F9B90040A4B4 /* AppDelegate.m in Sources */,
+				A038244A1A420D18000C666B /* SPAirport.m in Sources */,
 				A090FF7A1A20F9B90040A4B4 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -244,14 +290,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		A090FF811A20F9B90040A4B4 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A090FF821A20F9B90040A4B4 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A090FF861A20F9B90040A4B4 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -297,7 +335,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -332,7 +370,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -343,8 +381,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "ERES-MAP/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -353,8 +399,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "ERES-MAP/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -412,6 +466,7 @@
 				A090FF991A20F9B90040A4B4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A090FF9A1A20F9B90040A4B4 /* Build configuration list for PBXNativeTarget "ERES-MAPTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +475,7 @@
 				A090FF9C1A20F9B90040A4B4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
