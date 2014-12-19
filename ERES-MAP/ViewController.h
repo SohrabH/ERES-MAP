@@ -8,9 +8,21 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
-#import <Superpin/Superpin.h>
+#import "REVClusterMapView.h"
+#import "CalloutMapAnnotation.h"
+#import "BasicMapAnnotation.h"
 
 @interface ViewController : UIViewController <MKMapViewDelegate>
-@property (nonatomic,weak) IBOutlet SPMapView *mapView;
+{
+    REVClusterMapView *_mapView;
+    CalloutMapAnnotation *_calloutAnnotation;
+    MKAnnotationView *_selectedAnnotationView;
+    BasicMapAnnotation *_customAnnotation;
+
+}
+
+@property (nonatomic, retain) MKAnnotationView *selectedAnnotationView;
+
+// @property (nonatomic,weak) IBOutlet SPMapView *mapView;
 @end
 
