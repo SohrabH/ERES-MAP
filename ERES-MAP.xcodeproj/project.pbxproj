@@ -27,6 +27,10 @@
 		A03824781A449778000C666B /* BasicMapAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = A03824771A449778000C666B /* BasicMapAnnotationView.m */; };
 		A038247B1A449833000C666B /* AccessorizedCalloutMapAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = A038247A1A449833000C666B /* AccessorizedCalloutMapAnnotationView.m */; };
 		A038247D1A44989E000C666B /* CalloutMapAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = A038247C1A44989E000C666B /* CalloutMapAnnotationView.m */; };
+		A03824801A456CC8000C666B /* infoWindow.png in Resources */ = {isa = PBXBuildFile; fileRef = A038247F1A456CC8000C666B /* infoWindow.png */; };
+		A03824831A456D52000C666B /* InfoWindowView.m in Sources */ = {isa = PBXBuildFile; fileRef = A03824821A456D52000C666B /* InfoWindowView.m */; };
+		A03824851A456D6B000C666B /* InfoWindowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A03824841A456D6B000C666B /* InfoWindowView.xib */; };
+		A03824871A4581D0000C666B /* infoWindow2.png in Resources */ = {isa = PBXBuildFile; fileRef = A03824861A4581D0000C666B /* infoWindow2.png */; };
 		A090FF7A1A20F9B90040A4B4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A090FF791A20F9B90040A4B4 /* main.m */; };
 		A090FF7D1A20F9B90040A4B4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A090FF7C1A20F9B90040A4B4 /* AppDelegate.m */; };
 		A090FF801A20F9B90040A4B4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A090FF7F1A20F9B90040A4B4 /* ViewController.m */; };
@@ -79,6 +83,11 @@
 		A038247A1A449833000C666B /* AccessorizedCalloutMapAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessorizedCalloutMapAnnotationView.m; sourceTree = "<group>"; };
 		A038247C1A44989E000C666B /* CalloutMapAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalloutMapAnnotationView.m; sourceTree = "<group>"; };
 		A038247E1A4498AD000C666B /* CalloutMapAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalloutMapAnnotationView.h; sourceTree = "<group>"; };
+		A038247F1A456CC8000C666B /* infoWindow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = infoWindow.png; sourceTree = "<group>"; };
+		A03824811A456D52000C666B /* InfoWindowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoWindowView.h; sourceTree = "<group>"; };
+		A03824821A456D52000C666B /* InfoWindowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoWindowView.m; sourceTree = "<group>"; };
+		A03824841A456D6B000C666B /* InfoWindowView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoWindowView.xib; sourceTree = "<group>"; };
+		A03824861A4581D0000C666B /* infoWindow2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = infoWindow2.png; sourceTree = "<group>"; };
 		A090FF741A20F9B90040A4B4 /* ERES-MAP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ERES-MAP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A090FF781A20F9B90040A4B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A090FF791A20F9B90040A4B4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -158,13 +167,13 @@
 				A03824701A4496D9000C666B /* CalloutMapAnnotation.h */,
 				A03824711A4496D9000C666B /* CalloutMapAnnotation.m */,
 				A03824791A449833000C666B /* AccessorizedCalloutMapAnnotationView.h */,
+				A038247A1A449833000C666B /* AccessorizedCalloutMapAnnotationView.m */,
 				A038247E1A4498AD000C666B /* CalloutMapAnnotationView.h */,
 				A038247C1A44989E000C666B /* CalloutMapAnnotationView.m */,
 				A03824731A4496F4000C666B /* BasicMapAnnotation.h */,
 				A03824741A4496F4000C666B /* BasicMapAnnotation.m */,
 				A03824761A449778000C666B /* BasicMapAnnotationView.h */,
 				A03824771A449778000C666B /* BasicMapAnnotationView.m */,
-				A038247A1A449833000C666B /* AccessorizedCalloutMapAnnotationView.m */,
 			);
 			name = "CallOut Map";
 			sourceTree = "<group>";
@@ -172,6 +181,8 @@
 		A090FF6B1A20F9B90040A4B4 = {
 			isa = PBXGroup;
 			children = (
+				A03824861A4581D0000C666B /* infoWindow2.png */,
+				A038247F1A456CC8000C666B /* infoWindow.png */,
 				A038246F1A4496B9000C666B /* CallOut Map */,
 				A038246B1A442B0F000C666B /* asynchrony-logo-small.png */,
 				A038246C1A442B0F000C666B /* asynchrony-logo-small@2x.png */,
@@ -204,6 +215,9 @@
 				A03824691A442467000C666B /* REVClusterAnnotationView.m */,
 				A03824481A420D18000C666B /* SPAirport.h */,
 				A03824491A420D18000C666B /* SPAirport.m */,
+				A03824811A456D52000C666B /* InfoWindowView.h */,
+				A03824821A456D52000C666B /* InfoWindowView.m */,
+				A03824841A456D6B000C666B /* InfoWindowView.xib */,
 				A03824551A421077000C666B /* Resources */,
 				A090FF841A20F9B90040A4B4 /* Images.xcassets */,
 				A090FF861A20F9B90040A4B4 /* LaunchScreen.xib */,
@@ -320,7 +334,10 @@
 			files = (
 				A038244C1A420D1E000C666B /* Airports.plist in Resources */,
 				A090FF881A20F9B90040A4B4 /* LaunchScreen.xib in Resources */,
+				A03824851A456D6B000C666B /* InfoWindowView.xib in Resources */,
 				A018FAE11A303E5F0076C4A0 /* ViewController.xib in Resources */,
+				A03824871A4581D0000C666B /* infoWindow2.png in Resources */,
+				A03824801A456CC8000C666B /* infoWindow.png in Resources */,
 				A038246E1A442B0F000C666B /* asynchrony-logo-small@2x.png in Resources */,
 				A090FF851A20F9B90040A4B4 /* Images.xcassets in Resources */,
 				A038246D1A442B0F000C666B /* asynchrony-logo-small.png in Resources */,
@@ -351,6 +368,7 @@
 				A03824751A4496F4000C666B /* BasicMapAnnotation.m in Sources */,
 				A038244A1A420D18000C666B /* SPAirport.m in Sources */,
 				A090FF7A1A20F9B90040A4B4 /* main.m in Sources */,
+				A03824831A456D52000C666B /* InfoWindowView.m in Sources */,
 				A03824661A442435000C666B /* REVClusterMapView.m in Sources */,
 				A03824671A442435000C666B /* REVClusterPin.m in Sources */,
 				A03824781A449778000C666B /* BasicMapAnnotationView.m in Sources */,

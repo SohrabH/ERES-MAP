@@ -20,7 +20,7 @@
 		[self.accessory addTarget: self 
 						   action: @selector(calloutAccessoryTapped) 
 				 forControlEvents: UIControlEventTouchUpInside | UIControlEventTouchCancel];
-		[self addSubview:self.accessory];
+	//	[self addSubview:self.accessory];
 	}
 	return self;
 }

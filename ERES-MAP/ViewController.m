@@ -12,7 +12,7 @@
 #import "BasicMapAnnotationView.h"
 #import <CoreLocation/CoreLocation.h>
 #import "AccessorizedCalloutMapAnnotationView.h"
-
+#import "InfoWindowView.h"
 #define BASE_RADIUS .5 // = 1 mile
 #define MINIMUM_LATITUDE_DELTA 0.20
 #define BLOCKS 4
@@ -126,50 +126,47 @@
     
     REVClusterPin *pin = (REVClusterPin *)annotation;
     MKAnnotationView *annView;
-    
     if (annotation == self.calloutAnnotation)
     {
         CalloutMapAnnotationView *calloutMapAnnotationView = (CalloutMapAnnotationView *)[_mapView dequeueReusableAnnotationViewWithIdentifier:@"CalloutAnnotation"];
-        if (!calloutMapAnnotationView) {
-            calloutMapAnnotationView = [[AccessorizedCalloutMapAnnotationView alloc] initWithAnnotation:annotation
-                                                                                         reuseIdentifier:@"CalloutAnnotation"];
-            calloutMapAnnotationView.contentHeight = 78.0f;
-            UIImage *asynchronyLogo = [UIImage imageNamed:@"asynchrony-logo-small.png"];
-            UIImageView *asynchronyLogoView = [[UIImageView alloc] initWithImage:asynchronyLogo];
-            asynchronyLogoView.frame = CGRectMake(5, 2, asynchronyLogoView.frame.size.width, asynchronyLogoView.frame.size.height);
-            [calloutMapAnnotationView.contentView addSubview:asynchronyLogoView];
+        if (!calloutMapAnnotationView)
+        {
+            calloutMapAnnotationView = [[AccessorizedCalloutMapAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"CalloutAnnotation"];
+            calloutMapAnnotationView.contentHeight = 86.0f;
+            
+            InfoWindowView *infoWindowObj = [[InfoWindowView alloc]init];
+            [calloutMapAnnotationView.contentView addSubview:infoWindowObj];
         }
-        
         calloutMapAnnotationView.parentAnnotationView = self.selectedAnnotationView;
         calloutMapAnnotationView.mapView = _mapView;
+        
         return calloutMapAnnotationView;
     }
-    else if (annotation == self.customAnnotation) {
+    else if (annotation == self.customAnnotation)
+    {
         MKPinAnnotationView *annotationView = [[BasicMapAnnotationView alloc] initWithAnnotation:annotation
-                                                                                  reuseIdentifier:@"CustomAnnotation"];
+                                                                                 reuseIdentifier:@"CustomAnnotation"];
         annotationView.canShowCallout = NO;
         annotationView.pinColor = MKPinAnnotationColorGreen;
         return annotationView;
     }
-    
-    
+
     if( [pin nodeCount] > 0 )
     {
         pin.title = @"___";
         
-        annView = (REVClusterAnnotationView*)
-        [mapView dequeueReusableAnnotationViewWithIdentifier:@"cluster"];
+        //annView = (REVClusterAnnotationView*) [mapView dequeueReusableAnnotationViewWithIdentifier:@"cluster"];
         
         if( !annView )
             annView = (REVClusterAnnotationView*)
-            [[REVClusterAnnotationView alloc] initWithAnnotation:annotation
-                                                  reuseIdentifier:@"cluster"];
+            [[REVClusterAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"cluster"];
         
         annView.image = [UIImage imageNamed:@"cluster.png"];
         
         [(REVClusterAnnotationView*)annView setClusterText:
          [NSString stringWithFormat:@"%lu",[pin nodeCount]]];
-        
+        annView.highlighted = false;
+
         annView.canShowCallout = NO;
     }
     else
@@ -182,15 +179,10 @@
         annView.image = [UIImage imageNamed:@"pingreen.png"];
         annView.canShowCallout = NO;
         annView.calloutOffset = CGPointMake(-6.0, 60.0);
-        annView.highlighted = true;
-//        MKPinAnnotationView *annotationView = [[BasicMapAnnotationView alloc] initWithAnnotation:annotation
-//                                                                                  reuseIdentifier:@"CustomAnnotation"];
-//        annotationView.canShowCallout = NO;
-//        annotationView.pinColor = MKPinAnnotationColorGreen;
-//        annotationView.animatesDrop = true;
-//        return annotationView;
-
     }
+    
+    
+    
     return annView;
 }
 
@@ -199,10 +191,13 @@
     NSLog(@"REVMapViewController mapView didSelectAnnotationView:");
     if (![view isKindOfClass:[REVClusterAnnotationView class]])
     {
-        if (self.calloutAnnotation == nil) {
+        if (self.calloutAnnotation == nil)
+        {
             self.calloutAnnotation = [[CalloutMapAnnotation alloc] initWithLatitude:view.annotation.coordinate.latitude
                                                                        andLongitude:view.annotation.coordinate.longitude];
-        } else {
+        }
+        else
+        {
             self.calloutAnnotation.latitude = view.annotation.coordinate.latitude;
             self.calloutAnnotation.longitude = view.annotation.coordinate.longitude;
         }
@@ -222,6 +217,18 @@
     
     [mapView setRegion:MKCoordinateRegionMake(centerCoordinate, newSpan)
               animated:YES];
+}
+
+- (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views
+{
+    for (MKAnnotationView *view in views)
+    {
+        if ([views count] == 1)
+        {
+            [[view superview] bringSubviewToFront:view];
+
+        }
+    }
 }
 
 @end
