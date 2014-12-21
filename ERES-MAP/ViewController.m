@@ -13,6 +13,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "AccessorizedCalloutMapAnnotationView.h"
 #import "InfoWindowView.h"
+
 #define BASE_RADIUS .5 // = 1 mile
 #define MINIMUM_LATITUDE_DELTA 0.20
 #define BLOCKS 4
@@ -60,35 +61,28 @@
     [self.view addSubview:_mapView];
     
     CLLocationCoordinate2D coordinate;
-    coordinate.latitude = 51.22;
-    coordinate.longitude = 4.39625;
+    coordinate.latitude = 25.26140086;
+    coordinate.longitude = 55.29669413;
     _mapView.region = MKCoordinateRegionMakeWithDistance(coordinate, 5000, 5000);
     
-    NSMutableArray *pins = [NSMutableArray array];
-    
-    for(int i=0;i<500;i++) {
-        CGFloat latDelta = rand()*0.125/RAND_MAX - 0.02;
-        CGFloat lonDelta = rand()*0.130/RAND_MAX - 0.08;
-        
-        CGFloat lat = 51.21992;
-        CGFloat lng = 4.39625;
-        
-        
-        CLLocationCoordinate2D newCoord = {lat+latDelta, lng+lonDelta};
-        REVClusterPin *pin = [[REVClusterPin alloc] init];
-        pin.title = [NSString stringWithFormat:@"Pin %i",i+1];;
-        pin.subtitle = [NSString stringWithFormat:@"Pin %i subtitle",i+1];
-        pin.coordinate = newCoord;
-        [pins addObject:pin];
-    }
-    
-    [_mapView addAnnotations:pins];
     
 }
 
+-(void)viewDidLoad
+{
+    arrBrokers = [[NSMutableArray alloc]init];
+    dictOneBroker = [[NSMutableDictionary alloc]init];
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self getBrokersList];
+    });
+}
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+    
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
@@ -135,6 +129,14 @@
             calloutMapAnnotationView.contentHeight = 86.0f;
             
             InfoWindowView *infoWindowObj = [[InfoWindowView alloc]init];
+            [self checkNullValues:[arrBrokers objectAtIndex:self.calloutAnnotation.tag]];
+            infoWindowObj.lblName.text   = [dictOneBroker objectForKey:@"ConatctEn"];
+            infoWindowObj.lblEmail.text  = [dictOneBroker objectForKey:@"Email"];
+            infoWindowObj.lblPhone.text  = [dictOneBroker objectForKey:@"Phone"];
+            infoWindowObj.lblMobile.text = [dictOneBroker objectForKey:@"Mobile"];
+            infoWindowObj.lblFax.text    = [dictOneBroker objectForKey:@"Fax"];
+            infoWindowObj.tvAddress.text = [dictOneBroker objectForKey:@"AddressEn"];
+            
             [calloutMapAnnotationView.contentView addSubview:infoWindowObj];
         }
         calloutMapAnnotationView.parentAnnotationView = self.selectedAnnotationView;
@@ -188,7 +190,9 @@
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
-    NSLog(@"REVMapViewController mapView didSelectAnnotationView:");
+    REVClusterPin *pin = (REVClusterPin *)view.annotation;
+    self.calloutAnnotation = nil;
+    NSLog(@"REVMapViewController mapView didSelectAnnotationView: %@", pin.title);
     if (![view isKindOfClass:[REVClusterAnnotationView class]])
     {
         if (self.calloutAnnotation == nil)
@@ -201,6 +205,7 @@
             self.calloutAnnotation.latitude = view.annotation.coordinate.latitude;
             self.calloutAnnotation.longitude = view.annotation.coordinate.longitude;
         }
+        self.calloutAnnotation.tag = [pin.title integerValue];
         [_mapView addAnnotation:self.calloutAnnotation];
         self.selectedAnnotationView = view;
         return;
@@ -231,4 +236,68 @@
     }
 }
 
+-(void)checkNullValues : (NSDictionary *) dict
+{
+    NSArray *arrKey = [dict allKeys];
+    dictOneBroker = [[NSMutableDictionary alloc]init];
+    for (int i = 0; i < [[dict allKeys] count]; i++)
+    {
+        NSLog(@"Key = %@", [[dict allKeys] objectAtIndex:i]);
+        if ([[dict objectForKey:[arrKey objectAtIndex:i]] isEqual:[NSNull null]])
+            [dictOneBroker setObject:@"-" forKey:[arrKey objectAtIndex:i]];
+        else
+            [dictOneBroker setObject:[dict objectForKey:[arrKey objectAtIndex:i]] forKey:[arrKey objectAtIndex:i]];
+        
+    }
+}
+#pragma mark
+#pragma mark Fetching Properties Methods
+
+- (void)getBrokersList
+{
+    activity.hidden = FALSE;
+    [activity startAnimating];
+    NSString* UrlString = [NSString stringWithFormat:@"%@",@"http://94.56.46.41/ejariapi/search/brokerlist?"];
+    WebServiceHelper *webObj = [[WebServiceHelper alloc]init];
+    webObj.delegate = self;
+    [webObj getMethodWithURL:UrlString];
+    
+}
+
+-(void) finished :(NSDictionary *)data
+{
+    for (int i = 0; i < [[data objectForKey:@"result"] count]; i++)
+    {
+        for (int j = 0; j < [[[[data objectForKey:@"result"] objectAtIndex:i] objectForKey:@"Offices"] count]; j++)
+        {
+            [arrBrokers addObject:[[[[data objectForKey:@"result"] objectAtIndex:i] objectForKey:@"Offices"] objectAtIndex:j]];
+        }
+    }
+    
+    [self addBrokerPins];
+}
+
+-(void)addBrokerPins
+{
+    NSMutableArray *pins = [NSMutableArray array];
+    
+    for(int i = 0; i< [arrBrokers count]; i++)
+    {
+        
+        CGFloat lat = [[[[arrBrokers objectAtIndex:i] objectForKey:@"location"] objectForKey:@"longitude"] floatValue];
+        CGFloat lng = [[[[arrBrokers objectAtIndex:i] objectForKey:@"location"] objectForKey:@"latitude"] floatValue];
+        
+        
+        CLLocationCoordinate2D newCoord = {lat, lng};
+        REVClusterPin *pin = [[REVClusterPin alloc] init];
+        pin.title = [NSString stringWithFormat:@"%d",i];
+//        pin.title = [NSString stringWithFormat:@"Pin %i",i+1];;
+//        pin.subtitle = [NSString stringWithFormat:@"Pin %i subtitle",i+1];
+        pin.coordinate = newCoord;
+        [pins addObject:pin];
+    }
+    
+    [_mapView addAnnotations:pins];
+     [activity stopAnimating];
+}
 @end

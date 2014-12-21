@@ -11,14 +11,17 @@
 #import "REVClusterMapView.h"
 #import "CalloutMapAnnotation.h"
 #import "BasicMapAnnotation.h"
+#import "WebServiceHelper.h"
 
-@interface ViewController : UIViewController <MKMapViewDelegate>
+@interface ViewController : UIViewController <MKMapViewDelegate, WsCompleteDelegate>
 {
+    IBOutlet UIActivityIndicatorView *activity;
     REVClusterMapView *_mapView;
     CalloutMapAnnotation *_calloutAnnotation;
     MKAnnotationView *_selectedAnnotationView;
     BasicMapAnnotation *_customAnnotation;
-
+    NSMutableArray *arrBrokers;
+    NSMutableDictionary *dictOneBroker;
 }
 
 @property (nonatomic, retain) MKAnnotationView *selectedAnnotationView;

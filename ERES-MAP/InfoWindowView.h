@@ -10,4 +10,9 @@
 
 @interface InfoWindowView : UIView
 
+@property (nonatomic, retain) IBOutlet UILabel *lblName;
+@property (nonatomic, retain) IBOutlet UILabel *lblEmail , *lblPhone , *lblMobile, *lblFax;
+@property (nonatomic, retain) IBOutlet UITextView *tvAddress;
+
+
 @end
